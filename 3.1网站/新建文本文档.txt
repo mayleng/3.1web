@@ -1,0 +1,27 @@
+1.SimplCommerce 这个系统自己编译的时候，需要安装 ef 工具，
+dotnet tool install --global dotnet-ef  
+
+安装之后检查是否安装成功：
+~/.dotnet/tools/dotnet-ef
+
+
+
+该网站运行前，需要在Linux环境初始化，simpl-build.sh 是初始化文件。（对SQL server数据库初始化，只需要初始化一次）用未发布的包来初始化。
+sh  simpl-build.sh
+
+
+初始化后可以（src/SimplCommerce.WebHost）通过dotnet run运行
+
+
+2.SimplCommerce-publish是发布后的网站；
+
+初始化后，该发布网站可直接使用，在任何可以访问SQLserver的系统上，不需要再次初始化。
+
+dotnet  SimplCommerce.WebHost.dll
+
+dotnet xxx.dll &
+后面加个&，放到后台跑
+
+
+该网站启动后只能本地访问： 可以配置一个Nginx才能外部访问
+curl http://localhost:5000
